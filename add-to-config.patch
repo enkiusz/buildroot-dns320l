@@ -1,0 +1,18 @@
+--- a/package/Config.in	2020-04-05 17:50:53.164637068 +0200
++++ b/package/Config.in	2020-04-05 17:50:31.240880077 +0200
+@@ -1772,6 +1772,7 @@
+ 	source "package/gmp/Config.in"
+ 	source "package/gsl/Config.in"
+ 	source "package/gtest/Config.in"
++	source "package/iniparser/Config.in"
+ 	source "package/jemalloc/Config.in"
+ 	source "package/lapack/Config.in"
+ 	source "package/libargtable2/Config.in"
+@@ -2288,6 +2289,7 @@
+ 	source "package/dcron/Config.in"
+ 	source "package/ddrescue/Config.in"
+ 	source "package/debianutils/Config.in"
++  source "package/dns320l-daemon/Config.in"
+ 	source "package/docker-cli/Config.in"
+ 	source "package/docker-compose/Config.in"
+ 	source "package/docker-containerd/Config.in"
