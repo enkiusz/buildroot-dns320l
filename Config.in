@@ -1,0 +1,2 @@
+source "$BR2_EXTERNAL_DLINK_DNS320L_PATH/package/dns320l-daemon/Config.in"
+source "$BR2_EXTERNAL_DLINK_DNS320L_PATH/package/iniparser/Config.in"
