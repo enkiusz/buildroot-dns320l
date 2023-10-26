@@ -9,7 +9,7 @@ DNS320L_DAEMON_SOURCE = tip.tar.bz2
 DNS320L_DAEMON_SITE = https://www.aboehler.at/hg/dns320l-daemon/archive
 DNS320L_DAEMON_LICENSE = GPL-3
 DNS320L_DAEMON_DEPENDENCIES = iniparser
-
+DNS320l_DAEMON_PATCH = 0001-listen-on-localhost.patch
 
 define DNS320L_DAEMON_BUILD_CMDS
 	$(TARGET_CONFIGURE_OPTS) $(TARGET_MAKE_ENV) $(MAKE) -C $(@D) \
@@ -26,8 +26,7 @@ define DNS320L_DAEMON_INSTALL_INIT_SYSTEMD
 endef
 
 define DNS320L_DAEMON_INSTALL_INIT_SYSV
-	$(INSTALL) -D -m 0755 $(BR2_EXTERNAL_DLINK_DNS320L_PATH)/package/dns320l-daemon/S50dns320l-daemon $(TARGET_DIR)/etc/init.d/S50dns320l-daemon
+	$(INSTALL) -D -m 0755 package/dns320l-daemon/S50dns320l-daemon $(TARGET_DIR)/etc/init.d/S50dns320l-daemon
 endef
 
 $(eval $(generic-package))
-

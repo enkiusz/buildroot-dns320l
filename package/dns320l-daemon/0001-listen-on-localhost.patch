@@ -1,0 +1,21 @@
+# HG changeset patch
+# User Maciej Grela <enki@fsck.pl>
+# Date 1696540279 -7200
+#      Thu Oct 05 23:11:19 2023 +0200
+# Node ID eca5ed65582402e64c36145290c214aee84b012b
+# Parent  1f945ce22321a876143b38aaf5610c8915172b90
+Subject: [PATCH] Listen on localhost by default
+Signed-off-by: Maciej Grela <enki@fsck.pl>
+
+diff -r 1f945ce22321 -r eca5ed655824 dns320l-daemon.ini
+--- a/dns320l-daemon.ini        Tue Dec 09 12:24:29 2014 +0100
++++ b/dns320l-daemon.ini        Thu Oct 05 23:11:19 2023 +0200
+@@ -4,7 +4,7 @@
+ 
+ [Daemon]
+ ServerPort = 57367
+-ServerAddr = 0.0.0.0
++ServerAddr = 127.0.0.1
+ SyncTimeOnStartup = 0
+ SyncTimeOnShutdown = 0
+ DeviceShutdownDelay = 30

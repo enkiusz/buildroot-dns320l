@@ -1,43 +1,42 @@
 #!/bin/sh
 
-trap "" HUP
-trap "" TERM
+DAEMON="dns320l-daemon"
 
 start() {
-	printf "Starting Simple System Daemon for D-Link DNS-320L: "
-	/usr/bin/dns320l-daemon
-	if [ $? != 0 ]; then
-		echo "FAILED"
-		exit 1
+	printf 'Starting %s: ' "$DAEMON"
+	start-stop-daemon -S -x "/usr/bin/$DAEMON"
+	status="$?"
+	if [ "$status" -eq 0 ]; then
+		echo "OK"
 	else
-		echo "done"
+		echo "FAIL"
 	fi
+	return "$status"
 }
 
 stop() {
-	printf "Stopping Simple System Daemon for D-Link DNS-320L: "
-	killall dns320l-daemon
-        echo "done"
+	printf 'Stopping %s: ' "$DAEMON"
+	start-stop-daemon -s INT -K -x "/usr/bin/$DAEMON"
+}
+
+poweroff() {
+	printf 'Stopping %s: ' "$DAEMON"
+	start-stop-daemon -s TERM -K -x "/usr/bin/$DAEMON"
+}
+
+restart() {
+	stop
+	sleep 1
+	start
 }
 
 case "$1" in
-    start)
-	start
-	;;
-
-    stop)
-	stop
-	;;
-
-    restart)
-    	stop
-    	start
-	;;
-
-    *)
-	echo "Usage: /etc/init.d/S50dns320l-daemon {start|stop|restart}"
-	exit 1
-	;;
+	start|stop|restart)
+		"$1";;
+	reload)
+		restart;;
+	*)
+		echo "Usage: $0 {start|stop|restart|poweroff}"
+		exit 1
+		;;
 esac
-
-exit 0
